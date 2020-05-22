@@ -10,6 +10,7 @@
 	"author": "ejer",
 	"license": "MIT",
 	"dependencies": {
+		"@discordjs/opus": "^0.3.2",
 		"discord.js": "^12.2.0",
 		"dotenv": "^8.2.0"
 	}

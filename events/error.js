@@ -6,7 +6,7 @@ module.exports = (client, error) => {
 	let ejer = client.users.get("214651290234388480");
 
 	let embed = new Discord.MessageEmbed()
-		.setAuthor("hjönk hjönk im error", "https://i.imgur.com/FCZNSQa.png")
+		.setAuthor("hjönk hjönk am error", "https://i.imgur.com/FCZNSQa.png")
 		.setDescription(error)
 		.setColor(client.config.colors.secondary)
 		.setTimestamp();

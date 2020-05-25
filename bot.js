@@ -5,6 +5,7 @@ const fs = require("fs");
 const client = new Discord.Client();
 
 client.config = require("./config");
+client.playing = new Set();
 
 fs.readdir("./events/", (err, files) => {
 	if (err) return console.error(err);

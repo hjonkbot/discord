@@ -7,6 +7,9 @@ exports.run = (client, message, args) => {
 	let voiceChannel = message.member.voice.channel;
 	if (!voiceChannel) return message.reply("JOIN A HJONKING VOICE CHANNEL");
 
+	if (client.playing.has(message.guild.id)) return;
+	client.playing.add(message.guild.id);
+
 	voiceChannel
 		.join()
 		.then(connection => {
@@ -16,7 +19,10 @@ exports.run = (client, message, args) => {
 
 				const dispatcher = connection.play(directory + sound);
 				dispatcher.on("speaking", speaking => {
-					if (speaking === 0) return voiceChannel.leave();
+					if (speaking === 0) {
+						voiceChannel.leave();
+						return client.playing.delete(message.guild.id);
+					}
 				});
 			});
 		})
@@ -24,7 +30,7 @@ exports.run = (client, message, args) => {
 };
 
 exports.help = {
-	name: "play",
+	name: "hjonk",
 	description: "Play the honk sound.",
-	usage: "play",
+	usage: "hjonk",
 };

@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 const fs = require("fs");
 
 const directory = "./assets/sounds/honk/";
@@ -12,14 +11,14 @@ exports.run = (client, message, args) => {
 
 	voiceChannel
 		.join()
-		.then(connection => {
+		.then((connection) => {
 			fs.readdir(directory, (err, files) => {
 				if (err) return console.error(err);
 				let sound = files[Math.floor(Math.random() * files.length)];
 
 				const dispatcher = connection.play(directory + sound);
 				message.channel.send("hjönk");
-				dispatcher.on("speaking", speaking => {
+				dispatcher.on("speaking", (speaking) => {
 					if (speaking === 0) {
 						voiceChannel.leave();
 						return client.playing.delete(message.guild.id);
@@ -27,7 +26,7 @@ exports.run = (client, message, args) => {
 				});
 			});
 		})
-		.catch(err => console.log(err));
+		.catch((err) => console.log(err));
 };
 
 exports.help = {

@@ -13,8 +13,8 @@ exports.run = (client, message, args) => {
 			.setDescription(
 				`Type \`${client.config.prefix} help [command]\` to get information about a command.\n\n` +
 					client.commands
-						.filter((cmd) => !cmd.help.staff)
-						.map((cmd) => `\`${cmd.help.name}\` - ${cmd.help.description}`)
+						.filter(cmd => !cmd.help.staff)
+						.map(cmd => `\`${cmd.help.name}\` - ${cmd.help.description}`)
 						.join("\n")
 			);
 
@@ -42,7 +42,7 @@ exports.run = (client, message, args) => {
 			.setTitle(`Command`)
 			.setColor(client.config.colors.primary)
 			.setDescription(
-				`**Name:** ${props.help.name}\n**Description:** ${props.help.description}\n**Usage:** ${client.config.prefix}${props.help.usage}`
+				`**Name:** ${props.help.name}\n**Description:** ${props.help.description}\n**Usage:** ${client.config.prefix} ${props.help.usage}`
 			);
 
 		message.channel.send(embed);

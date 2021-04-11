@@ -5,7 +5,7 @@ const directory = "./assets/sounds/honk/";
 
 exports.run = (client, message, args) => {
 	let voiceChannel = message.member.voice.channel;
-	if (!voiceChannel) return message.reply("JOIN A HJONKING VOICE CHANNEL");
+	if (!voiceChannel) return message.reply("voic chanel pls");
 
 	if (client.playing.has(message.guild.id)) return;
 	client.playing.add(message.guild.id);
@@ -18,6 +18,7 @@ exports.run = (client, message, args) => {
 				let sound = files[Math.floor(Math.random() * files.length)];
 
 				const dispatcher = connection.play(directory + sound);
+				message.channel.send("hjönk");
 				dispatcher.on("speaking", speaking => {
 					if (speaking === 0) {
 						voiceChannel.leave();

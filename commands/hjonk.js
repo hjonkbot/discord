@@ -37,6 +37,7 @@ exports.run = (client, message, args) => {
 					};
 					honkOnRepeat();
 				} else {
+					let sound = files[Math.floor(Math.random() * files.length)];
 					const dispatcher = connection.play(directory + sound);
 					dispatcher.on("speaking", (speaking) => {
 						if (speaking === 0) {

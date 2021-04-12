@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
 	if (!voiceChannel) return message.reply("voic chanel pls");
 
 	let repeat = 1;
-	if (args[0] && args[0] > 1 && args[0] < 30) repeat = args[0];
+	if (args[0] && args[0] > 1 && args[0] <= 15) repeat = args[0];
 
 	if (client.playing.has(message.guild.id)) return;
 	client.playing.add(message.guild.id);
@@ -53,6 +53,6 @@ exports.run = (client, message, args) => {
 exports.help = {
 	name: "hjonk",
 	description:
-		"Play the honk sound. You can set the amount of hjonks, or leave the argument blank to play it just once. The maximum amount is 30.",
+		"Play the honk sound. You can set the amount of hjonks, or leave the argument blank to play it just once. The maximum amount is 15.",
 	usage: "hjonk [amount]",
 };

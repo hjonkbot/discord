@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
 						dispatcher.on("speaking", (speaking) => {
 							if (speaking === 0) {
 								if (repeat <= 1) {
-									voiceChannel.leave();
+									message.guild.me.voice.channel.leave();
 									return client.playing.delete(message.guild.id);
 								} else {
 									repeat--;
@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
 					const dispatcher = connection.play(directory + sound);
 					dispatcher.on("speaking", (speaking) => {
 						if (speaking === 0) {
-							voiceChannel.leave();
+							message.guild.me.voice.channel.leave();
 							return client.playing.delete(message.guild.id);
 						}
 					});
@@ -54,6 +54,6 @@ exports.run = (client, message, args) => {
 exports.help = {
 	name: "hjonk",
 	description:
-		"Play the honk sound. You can set the amount of hjonks, or leave the argument blank to play it just once. The maximum amount is 15.",
-	usage: "hjonk [amount]",
+		"Play the honk sound. You can specify the amount of honks (max 15), or leave the arguments blank.",
+	usage: "hjonk",
 };

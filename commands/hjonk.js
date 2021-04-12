@@ -17,11 +17,11 @@ exports.run = (client, message, args) => {
 		.then((connection) => {
 			fs.readdir(directory, (err, files) => {
 				if (err) return console.error(err);
-				let sound = files[Math.floor(Math.random() * files.length)];
 
 				message.channel.send("hjönk");
 				if (repeat > 1) {
 					const honkOnRepeat = () => {
+						let sound = files[Math.floor(Math.random() * files.length)];
 						const dispatcher = connection.play(directory + sound);
 						dispatcher.on("speaking", (speaking) => {
 							if (speaking === 0) {
